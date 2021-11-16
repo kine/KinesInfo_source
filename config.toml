@@ -1,7 +1,7 @@
 baseURL = 'https://kine.github.io/KinesInfo/'
 languageCode = 'en-us'
 title = "Kine's info"
-theme = "doit"
+theme = "DoIt"
 [params]
   # DoIt theme version
   version = "0.2.X"
