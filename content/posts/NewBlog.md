@@ -3,8 +3,8 @@ title: "My new blog"
 date: 2021-11-16T10:00:10+01:00
 draft: false
 categories:
-- Test
 - Welcome
+- General
 tags:
 - General
 - Welcome
