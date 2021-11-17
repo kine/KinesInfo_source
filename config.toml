@@ -59,7 +59,7 @@ enableRobotsTXT = true
       # subtitle shown in home page
       subtitle = "Subtitle"
       # whether to use typeit animation for subtitle
-      typeit = true
+      typeit = false
       # whether to show social links
       social = true
       # disclaimer (HTML format is supported)
@@ -73,11 +73,12 @@ enableRobotsTXT = true
   # Social config in home page
   [params.social]
     GitHub = "kine"
-    Linkedin = "kamil.sacek"
+    Linkedin = "kamil-sacek-8830661"
     Twitter = "MVPKine"
-    BuyMeACoffee = "bckine"
+    BuyMeACoffee = "kine"
     Email = "kamil.sacek@gmail.com"
     RSS = true      
+    
   [params.search]
     enable = true
     # type of search engine ("lunr", "algolia", "fuse")
