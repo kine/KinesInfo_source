@@ -21,7 +21,7 @@ Some partners are putting everything into one app per customer. Some are splitti
 Our company is going through the way of splitting, rather than not splitting, because on the beginning we wanted to have possibility to re-use the "tiny apps" for others if needed.
 But the result? Here is the picture (taken from real live customer project):
 
-![Real structure example](/assets/DependencyGraph.png)
+{{< fancybox path="/assets/" file="DependencyGraph.png" caption="Real world apps dependencies example" gallery="PTEArchitecture1" >}}
 
 As you can see, some apps are "self standing". This is what we wanted to have. But most of them are connected with others. That's something we didn't want. What does it mean? They are not re-usable, if you do not want to re-use even the dependencies. It means you can reuse only the "leftmost" apps. It makes most of the apps non-reusable without refactoring.
 
@@ -106,7 +106,7 @@ Still: **Split or not to split?**
 
 Ok, compare the PROs and CONs of both methods when we remove the solvable items:
 
-![SplitProCons](/assets/SplitProCons.png)
+{{< fancybox path="/assets/" file="SplitProCons.png" caption="PROs and CONs comparison" gallery="PTEArchitecture1" >}}
 
 Items I think are most interesting are in **bold**.
 
