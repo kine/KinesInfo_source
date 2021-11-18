@@ -1,148 +1,129 @@
 baseURL = 'https://blog.kine.cz/'
 languageCode = 'en-us'
 title = "Kine's info"
-theme = "DoIt"
+theme = "hugo-future-imperfect-slim"
 enableRobotsTXT = true
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
-  
-[params]
-  # DoIt theme version
-  version = "0.2.X"
-  description = "All around Microsoft Dynamics 365 Business Central"
-  keywords = ["Microsoft Dynamics 365 Business Central", "Navision", "Microsoft Dynamics-NAV","Powershell","Azure DevOps"]
-  [params.header.title]
-    logo = ""
-    name = "Kine's Info"
-    # you can add extra information before the name (HTML format is supported), such as icons
-    pre = "<i class='far fa-edit fa-fw'></i>"
-    # you can add extra information after the name (HTML format is supported), such as icons
-    post = ""
-    # whether to use typeit animation for title name
-    typeit = true  
-  [params.typeit]
-    # typing speed between each step (measured in milliseconds)
-    speed = 100
-    # blinking speed of the cursor (measured in milliseconds)
-    cursorSpeed = 1000
-    # character used for the cursor (HTML format is supported)
-    cursorChar = "|"
-    # cursor duration after typing finishing (measured in milliseconds, "-1" means unlimited)
-    duration = -1
- # App icon config
-  [params.app]
-    # optional site title override for the app when added to an iOS home screen or Android launcher
-    title = "Kine's Info"
-    # whether to omit favicon resource links
-    noFavicon = false
-    # modern SVG favicon to use in place of older style .png and .ico files
-    svgFavicon = ""
-    # Safari mask icon color
-    iconColor = "#5bbad5"
-    # Windows v8-10 tile color
-    tileColor = "#da532c"    
-  # Home page config
-  [params.home]
-    # amount of RSS pages
-    rss = 10
 
-    # Home page profile
-    [params.home.profile]
-      enable = true
-      # Gravatar Email for preferred avatar in home page
-      gravatarEmail = "kamil.sacek@navertica.com"
-      # URL of avatar shown in home page
-      #avatarURL = "/images/avatar.webp"
-      # title shown in home page (HTML format is supported)
-      title = "Kine's Info"
-      # subtitle shown in home page
-      subtitle = "Subtitle"
-      # whether to use typeit animation for subtitle
-      typeit = false
-      # whether to show social links
-      social = true
-      # disclaimer (HTML format is supported)
-      disclaimer = "<i>Disclaimer ...</i>"
-
-    # Home page posts
-    [params.home.posts]
-      enable = true
-      # special amount of posts in each home posts page
-      paginate = 7    
-  # Social config in home page
-  [params.social]
-    GitHub = "kine"
-    Linkedin = "kamil-sacek-8830661"
-    Twitter = "MVPKine"
-    BuyMeACoffee = "kine"
-    Email = "kamil.sacek@gmail.com"
-    RSS = true      
+[social]
+  GitHub = "kine"
+  Linkedin = "kamil-sacek-8830661"
+  Twitter = "MVPKine"
+  BuyMeACoffee = "kine"
+  Email = "kamil.sacek@gmail.com"
     
-  [params.search]
-    enable = true
-    # type of search engine ("lunr", "algolia", "fuse")
-    type = "fuse"
-    # max index length of the chunked content
-    contentLength = 4000
-    # placeholder of the search bar
-    placeholder = ""
-    #  max number of results length
-    maxResultLength = 10
-    #  snippet length of the result
-    snippetLength = 30
-    #  HTML tag name of the highlight part in results
-    highlightTag = "em"
-    #  whether to use the absolute URL based on the baseURL in search index
-    absoluteURL = false
-    [params.search.algolia]
-      index = ""
-      appID = ""
-      searchKey = ""
-    [params.search.fuse]
-      #  https://fusejs.io/api/options.html
-      isCaseSensitive = false
-      minMatchCharLength = 2
-      findAllMatches = false
-      location = 0
-      threshold = 0.3
-      distance = 100
-      ignoreLocation = false
-      useExtendedSearch = false
-      ignoreFieldNorm = false    
-[menu]
-  [[menu.main]]
-    identifier = "posts"
-    # you can add extra information before the name (HTML format is supported), such as icons
-    pre = ""
-    # you can add extra information after the name (HTML format is supported), such as icons
-    post = ""
-    name = "Posts"
-    url = "posts/"
-    # title will be shown when you hover on this menu link
-    title = ""
-    weight = 1
-  [[menu.main]]
-    identifier = "tags"
-    pre = ""
-    post = ""
-    name = "Tags"
-    url = "tags/"
-    title = ""
-    weight = 2
-  [[menu.main]]
-    identifier = "categories"
-    pre = ""
-    post = ""
-    name = "Categories"
-    url = "categories/"
-    title = ""
-    weight = 3
+[params]
+  enableCDN             = false
+  cssFiles              = ["default"]
+  jsFiles               = ["default"]
+  highlightjs           = true
+  highlightjsTheme      = ""
+  highlightjsLang       = []
+  viewMorePostsLink     = "blog"
+  readingTime           = true
+  imageStretch          = ""
+  removeBlur            = false
+  socialShare           = ["twitter", "linkedin", "buymeacoffee", "email"]
+  hideEmptyStats        = false
+  toc                   = true
+  tocWords              = 400
 
-# Markup related configuration in Hugo
-[markup]
-  # Syntax Highlighting (https://gohugo.io/content-management/syntax-highlighting)
-  [markup.highlight]
-    # false is a necessary configuration (https://github.com/dillonzq/LoveIt/issues/158)
-    noClasses = false
+  [params.meta]
+    description         = "Description"
+    author              = "Kamil (Kine) Sacek"
+    favicon             = false
+    svg                 = true
+    faviconVersion      = "1"
+    msColor             = "#ffffff"
+    iOSColor            = "#ffffff"
+
+  [params.header]
+    navbarTitle         = "Kine's Info"
+    dynamicTitles       = true
+    searchMenu          = true
+    shareMenu           = true
+    languageMenu        = true
+
+  [params.intro]
+    header                = "Kine's Info"
+    paragraph             = "Another blog about Microsoft Dynamics 365 Business Central (AL, Powershell, Azure DevOps etc.)"
+    rssIntro              = true
+    socialIntro           = true
+    hideWhenSingleColumn  = false
+    alwaysOnHomepage      = false
+
+    [params.intro.pic]
+      src                 = "img/main/logo.jpg"
+      shape               = "circle"
+      width               = ""
+      alt                 = "Kine's Info"
+
+  [params.sidebar]
+    about               = "Kamil Sacek about"
+    postAmount          = 5
+    categories          = true
+    categoriesByCount   = true
+
+  [params.footer]
+    rssFooter           = true
+    socialFooter        = true
+
+  [params.utterances]
+    enabled             = false
+    repo                = ""
+    issueTerm           = "pathname"
+    issueNumber         = ""
+    label               = ""
+    theme               = "github-light"
+
+  [params.staticman]
+    enabled             = true
+    api                 = ""  # No Trailing Slash
+    gitProvider         = ""
+    username            = ""
+    repo                = ""
+    branch              = ""
+
+    [params.staticman.recaptcha]
+      siteKey           = ""
+      encryptedKey      = ""
+
+[menu]
+
+  [[menu.main]]
+    name              = "Home"
+    identifier        = "home"
+    url               = ""
+    pre               = "<i class='fa fa-home'></i>"
+    weight            = 1
+
+  [[menu.main]]
+    name              = "About"
+    identifier        = "about"
+    url               = "about"
+    pre               = "<i class='far fa-id-card'></i>"
+    weight            = 2
+
+  [[menu.main]]
+    name              = "Blog"
+    identifier        = "blog"
+    url               = ""
+    pre               = "<i class='far fa-newspaper'></i>"
+    weight            = 3
+
+  [[menu.main]]
+    name              = "Categories"
+    identifier        = "categories"
+    url               = "categories"
+    pre               = "<i class='fas fa-sitemap'></i>"
+    weight            = 5
+
+  [[menu.main]]
+    name              = "Contact"
+    identifier        = "contact"
+    url               = "contact"
+    pre               = "<i class='far fa-envelope'></i>"
+    weight            = 6
 

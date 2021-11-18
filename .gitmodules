@@ -1,4 +1,4 @@
-[submodule "themes/DoIt"]
-	path = themes/DoIt
-	url = https://github.com/HEIGE-PCloud/DoIt.git
+[submodule "themes/hugo-future-imperfect-slim"]
+	path = themes/hugo-future-imperfect-slim
+	url = https://github.com/pacollins/hugo-future-imperfect-slim.git
 	branch = master
