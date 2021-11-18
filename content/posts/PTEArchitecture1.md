@@ -1,7 +1,7 @@
 ---
 title: "Architecture of PTE"
-date: 2021-11-16T10:00:10+01:00
-draft: true
+date: 2021-11-18T16:51:00+01:00
+draft: false
 categories:
 - Business Central
 - Architecture
