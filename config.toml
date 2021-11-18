@@ -122,6 +122,13 @@ canonifyURLs = true
     pre               = "<i class='fas fa-sitemap'></i>"
     weight            = 5
 
+  [[menu.main]]
+    name              = "Tags"
+    identifier        = "tags"
+    url               = "tags"
+    pre               = "<i class='fas fa-tags'></i>"
+    weight            = 7
+
 #  [[menu.main]]
 #    name              = "Contact"
 #    identifier        = "contact"
