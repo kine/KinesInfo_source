@@ -3,6 +3,8 @@ languageCode = 'en-us'
 title = "Kine's info"
 theme = "hugo-future-imperfect-slim"
 enableRobotsTXT = true
+googleAnalytics = "UA-92839335-1"
+canonifyURLs = true
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
@@ -25,13 +27,13 @@ enableRobotsTXT = true
   readingTime           = true
   imageStretch          = ""
   removeBlur            = false
-  socialShare           = ["twitter", "linkedin", "buymeacoffee", "email"]
+  socialShare           = ["twitter", "linkedin", "email"]
   hideEmptyStats        = false
   toc                   = true
   tocWords              = 400
 
   [params.meta]
-    description         = "Description"
+    description         = "Kamil Sacek blog about not only Microsoft Dynamics 365 Business Central but all around like Powershell, Azure DevOps etc."
     author              = "Kamil (Kine) Sacek"
     favicon             = false
     svg                 = true
@@ -48,20 +50,20 @@ enableRobotsTXT = true
 
   [params.intro]
     header                = "Kine's Info"
-    paragraph             = "Another blog about Microsoft Dynamics 365 Business Central (AL, Powershell, Azure DevOps etc.)"
+    paragraph             = "Another blog about Microsoft Dynamics 365 Business Central (AL, Powershell, Azure DevOps etc.)<center><a href='https://mvp.microsoft.com/en-us/mvp/kamil%20sacek-21590'><img src='/assets/MVP_Logo_Horizontal_Secondary_Blue286_CMYK_72ppi.png' width='50%'></a></center>"
     rssIntro              = true
     socialIntro           = true
     hideWhenSingleColumn  = false
     alwaysOnHomepage      = false
 
-    [params.intro.pic]
-      src                 = "img/main/logo.jpg"
+    [params.intro.pic] 
+      src                 = "/assets/KSC.png"
       shape               = "circle"
       width               = ""
       alt                 = "Kine's Info"
 
   [params.sidebar]
-    about               = "Kamil Sacek about"
+    about               = "I have more than 35 years of experience with SW development and everything around IT. I have got my first MVP award in 2004."
     postAmount          = 5
     categories          = true
     categoriesByCount   = true
@@ -79,7 +81,7 @@ enableRobotsTXT = true
     theme               = "github-light"
 
   [params.staticman]
-    enabled             = true
+    enabled             = false
     api                 = ""  # No Trailing Slash
     gitProvider         = ""
     username            = ""
@@ -120,10 +122,10 @@ enableRobotsTXT = true
     pre               = "<i class='fas fa-sitemap'></i>"
     weight            = 5
 
-  [[menu.main]]
-    name              = "Contact"
-    identifier        = "contact"
-    url               = "contact"
-    pre               = "<i class='far fa-envelope'></i>"
-    weight            = 6
+#  [[menu.main]]
+#    name              = "Contact"
+#    identifier        = "contact"
+#    url               = "contact"
+#    pre               = "<i class='far fa-envelope'></i>"
+#    weight            = 6
 
