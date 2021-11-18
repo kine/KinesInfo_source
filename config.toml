@@ -63,7 +63,7 @@ canonifyURLs = true
       alt                 = "Kine's Info"
 
   [params.sidebar]
-    about               = "I have more than 35 years of experience with SW development and everything around IT. I have got my first MVP award in 2004."
+    about               = "I have more than 35 years of experience with SW development and everything around IT. I have got my first MVP award in 2005."
     postAmount          = 5
     categories          = true
     categoriesByCount   = true

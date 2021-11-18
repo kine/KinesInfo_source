@@ -60,6 +60,7 @@ And based on their properties, we can divide them into two groups:
 But still: **Split or not to split?**
 
 ## Differences
+
 Ok, previous classification is not helping us to answer the question. We should look at the
  CONs and PROs of the splitting the PTE into separate Apps:
 
@@ -107,12 +108,12 @@ Ok, compare the PROs and CONs of both methods when we remove the solvable items:
 
 ![SplitProCons](/assets/SplitProCons.png)
 
-Items I think are most interesting are in **bold**. 
+Items I think are most interesting are in **bold**.
 
-All depends on priorities you have in your company or team. If your priority is e.g. "Simpler maintenance" and "Clear responsibility" 
+All depends on priorities you have in your company or team. If your priority is e.g. "Simpler maintenance" and "Clear responsibility"
 and you sacrifice the "easy architecture decisions", go and split the apps.
 
-If your prioroty is simpler "architecture decisions" and you sacrifice "shared responsibility" (who is responsible for the content of big, all-in-one app?), go and do not split.
+If your priority is simpler "architecture decisions" and you sacrifice "shared responsibility" (who is responsible for the content of big, all-in-one app?), go and do not split.
 
 Ok, does it mean **split or not to split?**
 
