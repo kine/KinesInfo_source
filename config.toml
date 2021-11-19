@@ -74,23 +74,25 @@ canonifyURLs = true
 
   [params.utterances]
     enabled             = false
-    repo                = ""
+    repo                = "kinesinfo"
     issueTerm           = "pathname"
     issueNumber         = ""
     label               = ""
     theme               = "github-light"
 
   [params.staticman]
-    enabled             = false
-    api                 = ""  # No Trailing Slash
-    gitProvider         = ""
-    username            = ""
-    repo                = ""
-    branch              = ""
+    enabled             = true
+    api                 = "kinesinfo.herokuapp.com"  # No Trailing Slash
+    gitProvider         = "github"
+    username            = "kine"
+    repo                = "KinesInfo_source"
+    branch              = "master"
 
     [params.staticman.recaptcha]
-      siteKey           = ""
-      encryptedKey      = ""
+      siteKey           = "6LcsWkMdAAAAAD27lvZOIBkH4TSll08hMxHHLFxs"
+      encryptedKey      = "FdlTy3aVy1SZfJ3h9aKAOgqeyZIFjV6Tjk3yN9BXxz5WB6FcmGlafyM+hvBpDzOTstLDgQvBnWIn0T96nMLzI6bUyJL50tfeMuVpkYZhS9VkOhmPq7YEFmZCO7hVYkQkE4hh8JvVtyAmI9WKE5gOHBnRIrLWAFNLz7kUJRu7riOJtj8mNNMlpnfANVaiPQZ6xFykxG2X8RnJRW4dMV/335SiI5QcgB7fZzm0ntYZc1WsnYOUegqgw1z2ttJdB4J0xclKFcowrgKvq1LPn0P7H47EriVwt0QHz9NfK65CA6nJPQ8S487TI635IeXJ8HLOJkYeQnIyMeQZGKavlqDFFA=="
+      #siteKey = ""
+      #encryptedKey = ""
 
 [menu]
 
