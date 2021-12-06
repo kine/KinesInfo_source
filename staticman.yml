@@ -7,7 +7,12 @@ comments:
   #
   # Names of the fields the form is allowed to submit. If a field that is
   # not here is part of the request, an error will be thrown.
-  allowedFields: ["name", "email", "website", "body","replyThread","replyID","replyName"]
+  allowedFields: 
+    - name
+    - email
+    - website
+    - comment
+    - reply_to
 
   # When allowedOrigins is defined, only requests sent from one of the domains
   # listed will be accepted.
@@ -18,6 +23,7 @@ comments:
   # Name of the branch being used. Must match the one sent in the URL of the
   # request.
   branch: "master"
+  commitMessage: "New comment in {options.slug}"
 
   # List of fields to be populated automatically by Staticman and included in
   # the data file. Keys are the name of the field. The value can be an object
@@ -26,10 +32,12 @@ comments:
   generatedFields:
     date:
       type: date
+      options:
+        format: iso8601
 
   # The format of the generated data files. Accepted values are "json", "yaml"
   # or "frontmatter"
-  format: "json"
+  format: "yaml"
 
   # Whether entries need to be appproved before they are published to the main
   # branch. If set to `true`, a pull request will be created for your approval.
@@ -42,16 +50,20 @@ comments:
   # (*) REQUIRED
   #
   # Destination path (directory) for the data files. Accepts placeholders.
-  path: "data/comments/{options.entryId}"
+  path: "data/comments/{options.slug}"
 
   # (*) REQUIRED
   #
   # Destination path (filename) for the data files. Accepts placeholders.
-  filename: "{@id}"
+  #filename: "{@id}"
+  filename: "comment-{@timestamp}"
 
   # Names of required files. If any of these isn't in the request or is empty,
   # an error will be thrown.
-  requiredFields: ["name", "body"]
+  requiredFields:
+    - name
+    - email
+    - comment
 
   # List of transformations to apply to any of the fields supplied. Keys are
   # the name of the field and values are possible transformation types.
