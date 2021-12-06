@@ -1,5 +1,5 @@
 {{ if and .Site.Params.staticman (not (or .Site.Params.disable_comments .Params.disable_comments)) }}
-    <section id="comments">
+    <section id="comments" class='comments-container'>
         {{ if .Site.Params.staticman }}
         <h3 class="title"><a href="#comments">&#9997; Comments</a></h3>
         <section class="staticman-comments post-comments">
@@ -13,7 +13,7 @@
                 {{ range $index, $comments := (index $.Site.Data.comments $postSlug ) }}
                     {{ if not .reply_to }}
     
-                    <div id="commentid-{{ ._id }}" class="post-comment">
+                    <div id="{{ ._id }}" class="comment">
                         <div class="post-comment-header">
                         <img class="post-comment-avatar" src="https://www.gravatar.com/avatar/{{     .email }}?s=70&r=pg&d=identicon">
                             <p class="post-comment-info">
@@ -27,18 +27,18 @@
                         <div class="comment-message">
                             {{ .comment | markdownify }}
                         </div>
-                        <div class="comment__reply">
-                        <button id="{{ ._id }}" class="btn-info" href="#comment-form" onclick="changeValue('fields[reply_to]', '{{ ._id }}')">Reply to {{ .name     }}</button>
+                        <div class="comment-reply-btn2">
+                        <a id="{{ ._id }}" class="comment-reply-btn" href="#comment-form">Reply to {{ .name     }}</a>
                         </div>
                     </div>
-                {{ partial "comment-replies" (dict "entryId_parent" $postSlug "SiteDataComments_parent" $.Site.Data.comments "parentId" ._id "parentName" .name     "context" .) }}
+                        {{ partial "comment-replies" (dict "entryId_parent" $postSlug "SiteDataComments_parent" $.Site.Data.comments "parentId" ._id "parentName" .name     "context" .) }}
     
                     {{ end }}
             {{ end }}
         {{ end }}
     {{ end }}
 
-        <form id="comment-form" class="post-new-comment" method="post" action="{{ .Site.Params.staticman.endpoint }}/{{ .Site.Params.staticman.username }}/{{ .Site.Params.staticman.repository }}/{{ .Site.Params.staticman.branch }}/comments">
+        <form id="comment-form" class="new-comment" method="post">
             {{ if eq ($.Scratch.Get "hasComments") 0 }}
                 <p>Be the first to leave a comment! 🎉</p>
             {{ end }}
@@ -49,16 +49,25 @@
             <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
             <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
             <textarea name="fields[comment]" class="post-comment-field" placeholder="Comment (markdown is accepted) *" required rows="10"></textarea>
-            <input type="submit" class="post-comment-field btn btn-primary comment-buttons" value="Submit">
-        </form>
+            {{/* reCAPTHCA v2 */}}
+            {{ if and .Site.Params.staticman.recaptcha.siteKey .Site.Params.staticman.recaptcha.encryptedKey }}
+            {{ with .Site.Params.staticman.recaptcha }}
+              <input hidden name='options[reCaptcha][siteKey]' value='{{ .sitekey }}'>
+              <input hidden name='options[reCaptcha][secret]' value='{{ .encryptedkey }}'>
+              <div class='g-recaptcha' data-sitekey='{{ .sitekey }}'></div>
+            {{ end }}
+            {{ end }}
+              {{/* Start comment form alert messaging */}}
+              <div class='submit-notice'>
+                <strong class='submit-notice-text submit-success hidden'>{{ i18n "success_msg" }}</strong>
+                <strong class='submit-notice-text submit-failed hidden'>{{ i18n "error_msg" }}</strong>
+              </div>
+    
+              {{/* Form buttons */}}
+              <button type='button' id="comment-form-submit" class='button'>{{ i18n "submit" }}</button>
+              <button type='button' id="comment-form-submitted" class='hidden button' disabled>{{ i18n "submitted" }}</button>
+            </form>
     </section>
-
-    <div id="comment-submitted" class="dialog">
-        <h3>Thank you!</h3>
-        <p>Your comment has been submitted and will be published once it has been approved. &#128522;</p>
-
-        <p><a href="#" class="btn btn-primary comment-buttons ok">OK</a></p>
-    </div>
 
     {{ end }}
 </section>
