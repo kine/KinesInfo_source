@@ -79,8 +79,8 @@
     }
 
     function resetReplyTarget() {
-      //form.querySelector('.reply-notice .reply-name').innerText = '';
-      //form.querySelector('.reply-notice').classList.add('hidden'); // hide reply target display
+      form.querySelector('.reply-notice .reply-name').innerText = '';
+      form.querySelector('.reply-notice').classList.add('hidden'); // hide reply target display
       // empty all hidden fields whose name starts from "reply"
       Array.from(form.elements).filter(e => e.name.indexOf('fields[reply') === 0).forEach(e => e.value = '');
     }

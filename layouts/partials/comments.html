@@ -1,74 +1,98 @@
 {{ if and .Site.Params.staticman (not (or .Site.Params.disable_comments .Params.disable_comments)) }}
-    <section id="comments" class='comments-container'>
-        {{ if .Site.Params.staticman }}
-        <h3 class="title"><a href="#comments">&#9997; Comments</a></h3>
-        <section class="staticman-comments post-comments">
-            {{ $comments := readDir "data/comments" }}
-            {{ $.Scratch.Add "hasComments" 0 }}
-            {{ $postSlug := .File.BaseFileName }}
-    
-            {{ range $comments }}
-            {{ if eq .Name $postSlug }}
-                {{ $.Scratch.Add "hasComments" 1 }}
-                {{ range $index, $comments := (index $.Site.Data.comments $postSlug ) }}
-                    {{ if not .reply_to }}
-    
-                    <div id="{{ ._id }}" class="comment">
-                        <div class="post-comment-header">
-                        <img class="post-comment-avatar" src="https://www.gravatar.com/avatar/{{     .email }}?s=70&r=pg&d=identicon">
-                            <p class="post-comment-info">
-                                <span class="post-comment-name">{{ .name }}</span>
-                                <br>
-                                <a href="#commentid-{{ ._id }}" title="Permalink to this comment">
-                                <time class="post-time">{{ dateFormat "Monday, Jan 2, 2006 at     15:04 MST" .date }}</time>
-                                </a>
-                            </p>
-                        </div>
-                        <div class="comment-message">
-                            {{ .comment | markdownify }}
-                        </div>
-                        <div class="comment-reply-btn2">
-                        <a id="{{ ._id }}" class="comment-reply-btn" href="#comment-form">Reply to {{ .name     }}</a>
-                        </div>
+<div class='post'>
+<section id="comments" class='comments-container'>
+    {{ if .Site.Params.staticman }}
+    <h3 class="title"><a href="#comments">Comments</a></h3>
+    <section class="staticman-comments post-comments">
+        {{ $comments := readDir "data/comments" }}
+        {{ $.Scratch.Add "hasComments" 0 }}
+        {{ $postSlug := .File.BaseFileName }}
+
+        {{ range $comments }}
+        {{ if eq .Name $postSlug }}
+        {{ $.Scratch.Add "hasComments" 1 }}
+        {{ range $index, $comments := (index $.Site.Data.comments $postSlug ) }}
+        {{ if not .reply_to }}
+
+        <article id="{{ ._id }}" class="comment">
+            <header>
+                <img class='comment-avatar circle' src='https://www.gravatar.com/avatar/{{ .email }}?s=100'
+                    alt="{{ .name }}'s Gravatar">
+                <div>
+                    <div class='comment-author-container'>
+                        <h3 class='comment-author'>
+                            {{- if .website -}}
+                            <a rel='external nofollow' href='{{ .website }}'>{{ .name }}</a>
+                            {{- else -}}
+                            {{- .name -}}
+                            {{- end -}}
+                        </h3>
+                        <a class='comment-date' href='#{{ ._id }}' title='Permalink to this comment'>
+                            <time datetime='{{ .date }}'>{{ dateFormat "02 Jan 06 15:04" .date }}</time>
+                        </a>
                     </div>
-                        {{ partial "comment-replies" (dict "entryId_parent" $postSlug "SiteDataComments_parent" $.Site.Data.comments "parentId" ._id "parentName" .name     "context" .) }}
-    
-                    {{ end }}
-            {{ end }}
+                    <!-- TODO: Assess Value (ref ln#73): <a href='#{{ .replyID }}' class='reply-target'>{{ .replyName }}</a> -->
+                    <!-- TODO: Assess Value: <span class ="comment-threadID hidden">{{ .replyThread }}</span> -->
+                    <a class='comment-reply-btn' href='#say-something'>{{ i18n "reply" }}</a>
+                </div>
+            </header>
+            <div class="comment-message">
+                {{ .comment | markdownify }}
+            </div>
+        </article>
+        {{ partial "comment-replies" (dict "entryId_parent" $postSlug "SiteDataComments_parent" $.Site.Data.comments
+        "parentId" ._id "parentName" .name "context" .) }}
+
         {{ end }}
-    {{ end }}
+        {{ end }}
+        {{ end }}
+        {{ end }}
 
         <form id="comment-form" class="new-comment" method="post">
             {{ if eq ($.Scratch.Get "hasComments") 0 }}
-                <p>Be the first to leave a comment! 🎉</p>
+            <p>Be the first to leave a comment! 🎉</p>
             {{ end }}
             <h3 class="prompt">Say something</h3>
+            {{/* Display reply target */}}
+            <h3 class='reply-notice hidden'>
+              <span class='reply-name'></span>
+              <a class='reply-close-btn button'><i class='fas fa-times'></i></a>
+            </h3>
+ 
+            <input type='hidden' name='fields[replyName]' value=''>
             <input type="hidden" name="options[redirect]" value="{{ .Permalink }}#comment-submitted">
             <input type="hidden" name="options[slug]" value="{{ .File.BaseFileName }}">
-            <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
-            <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
+            <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required />
+            <input type="email" name="fields[email]" class="post-comment-field"
+                placeholder="Email address (will not be public) *" required />
+            <input type='text' name='fields[website]' class="post-comment-field"
+                placeholder='{{ i18n "form_website" }}'>
             <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
-            <textarea name="fields[comment]" class="post-comment-field" placeholder="Comment (markdown is accepted) *" required rows="10"></textarea>
+            <textarea name="fields[comment]" class="post-comment-field" placeholder="Comment (markdown is accepted) *"
+                required rows="10"></textarea>
             {{/* reCAPTHCA v2 */}}
             {{ if and .Site.Params.staticman.recaptcha.siteKey .Site.Params.staticman.recaptcha.encryptedKey }}
             {{ with .Site.Params.staticman.recaptcha }}
-              <input hidden name='options[reCaptcha][siteKey]' value='{{ .sitekey }}'>
-              <input hidden name='options[reCaptcha][secret]' value='{{ .encryptedkey }}'>
-              <div class='g-recaptcha' data-sitekey='{{ .sitekey }}'></div>
+            <input hidden name='options[reCaptcha][siteKey]' value='{{ .sitekey }}'>
+            <input hidden name='options[reCaptcha][secret]' value='{{ .encryptedkey }}'>
+            <div class='g-recaptcha' data-sitekey='{{ .sitekey }}'></div>
             {{ end }}
             {{ end }}
-              {{/* Start comment form alert messaging */}}
-              <div class='submit-notice'>
+            {{/* Start comment form alert messaging */}}
+            <div class='submit-notice'>
                 <strong class='submit-notice-text submit-success hidden'>{{ i18n "success_msg" }}</strong>
                 <strong class='submit-notice-text submit-failed hidden'>{{ i18n "error_msg" }}</strong>
-              </div>
-    
-              {{/* Form buttons */}}
-              <button type='button' id="comment-form-submit" class='button'>{{ i18n "submit" }}</button>
-              <button type='button' id="comment-form-submitted" class='hidden button' disabled>{{ i18n "submitted" }}</button>
-            </form>
+            </div>
+
+            {{/* Form buttons */}}
+            <button type='button' id="comment-form-submit" class='button'>{{ i18n "submit" }}</button>
+            <button type='button' id="comment-form-submitted" class='hidden button' disabled>{{ i18n "submitted"}}</button>
+            <button type='reset' id="comment-form-reset" class='button'>{{ i18n "reset" }}</button>
+
+        </form>
     </section>
 
     {{ end }}
 </section>
+</div>
 {{ end }}
