@@ -1,0 +1,30 @@
+{{ range $index, $comments := (index $.SiteDataComments_parent $.entryId_parent ) }}
+{{ if eq .reply_to $.parentId }}
+        <article id="{{ ._id }}" class="comment" style="margin-left: 40px;">
+            <header>
+                <img class='comment-avatar circle' src='https://www.gravatar.com/avatar/{{ .email }}?s=100'
+                    alt="{{ .name }}'s Gravatar">
+                <div>
+                    <div class='comment-author-container'>
+                        <h3 class='comment-author'>
+                            {{- if .website -}}
+                            <a rel='external nofollow' href='{{ .website }}'>{{ .name }}</a>
+                            {{- else -}}
+                            {{- .name -}}
+                            {{- end -}}
+                        </h3>
+                        <a class='comment-date' href='#{{ ._id }}' title='Permalink to this comment'>
+                            <time datetime='{{ .date }}'>{{ dateFormat "02 Jan 06 15:04" .date }}</time>
+                        </a>
+                    </div>
+                    <!-- TODO: Assess Value (ref ln#73): <a href='#{{ .replyID }}' class='reply-target'>{{ .replyName }}</a> -->
+                    <!-- TODO: Assess Value: <span class ="comment-threadID hidden">{{ .replyThread }}</span> -->
+                    <a class='comment-reply-btn' href='#say-something'>{{ i18n "reply" }}</a>
+                </div>
+            </header>
+            <div class="comment-message">
+                {{ .comment | markdownify }}
+            </div>
+        </article>
+{{ end }}
+{{ end }}

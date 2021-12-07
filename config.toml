@@ -5,6 +5,7 @@ theme = "hugo-future-imperfect-slim"
 enableRobotsTXT = true
 googleAnalytics = "UA-92839335-1"
 canonifyURLs = true
+assetDir = 'content/assets'
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
