@@ -1,6 +1,6 @@
 _id: 8a392c20-4940-11ec-9c59-07d4d35a6afc
 name: M.Hartung
-website: www.comsol.ag
+website: https://www.comsol.ag
 email: 8ee43edc442df502e2e9211d120afa94
 comment: "Hi.\r\n\"Performance (solvable)\"\r\nI think to many Extension on one elementar table (item / item ledger entry) is not solvable.\r\nThe Sql - join will decrease the access with every new Extension on one tabel.\r\n\r\nBeside your own extension you have external extension which extend perhabs also the elementar tables."
 date: 2021-11-19T13:56:49.063Z
