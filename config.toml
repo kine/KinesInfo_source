@@ -6,6 +6,7 @@ enableRobotsTXT = true
 googleAnalytics = "UA-92839335-1"
 canonifyURLs = true
 assetDir = 'content/assets'
+defaultContentLanguage = 'en'
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
