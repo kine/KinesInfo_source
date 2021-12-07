@@ -11,7 +11,7 @@
         {{ range $comments }}
         {{ if eq .Name $postSlug }}
         {{ $.Scratch.Add "hasComments" 1 }}
-        {{ range $index, $comments := (index $.Site.Data.comments $postSlug ) }}
+        {{ range $index, $comments := sort (index $.Site.Data.comments $postSlug ) "date"}}
         {{ if not .reply_to }}
 
         <article id="{{ ._id }}" class="comment">

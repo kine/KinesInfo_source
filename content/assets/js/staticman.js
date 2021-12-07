@@ -97,11 +97,12 @@
         //form.querySelector('input[name="fields[replyThread]"]').value = cmt.dataset.replyThread;
         form.querySelector('input[name="fields[reply_to]"]').value = cmt.getAttribute('id');
         let replyName = cmt.querySelector('.comment-author').innerText
+        let replyDate = cmt.querySelector('.comment-date').innerText
         form.querySelector('input[name="fields[replyName]"]').value = replyName;
 
         // display reply name
         form.querySelector('.reply-notice').classList.remove('hidden');
-        form.querySelector('.reply-name').innerText = replyName;
+        form.querySelector('.reply-name').innerText = replyName + ' ' + replyDate;
       }
     });
 

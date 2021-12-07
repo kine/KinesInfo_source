@@ -1,4 +1,4 @@
-{{ range $index, $comments := (index $.SiteDataComments_parent $.entryId_parent ) }}
+{{ range $index, $comments := sort (index $.SiteDataComments_parent $.entryId_parent ) "date" }}
 {{ if eq .reply_to $.parentId }}
         <article id="{{ ._id }}" class="comment" style="margin-left: 40px;">
             <header>
@@ -25,6 +25,9 @@
             <div class="comment-message">
                 {{ .comment | markdownify }}
             </div>
+            {{ partial "comment-replies" (dict "entryId_parent" $.entryId_parent "SiteDataComments_parent" $.SiteDataComments_parent
+            "parentId" ._id "parentName" .name "context" .) }}
         </article>
+
 {{ end }}
 {{ end }}
