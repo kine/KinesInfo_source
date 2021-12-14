@@ -51,4 +51,9 @@
 {{ if and .Site.Params.staticman.recaptcha.siteKey .Site.Params.staticman.recaptcha.encryptedKey }}
   <script src='https://www.google.com/recaptcha/api.js'></script>
 {{- end -}}
+{{- if (.Params.mermaid) -}}
+<!-- MermaidJS support -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: true, securityLevel: 'loose'});</script>
+{{- end -}}
 {{- template "_internal/google_analytics_async.html" . -}}
