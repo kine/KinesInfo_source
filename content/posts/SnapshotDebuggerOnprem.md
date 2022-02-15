@@ -1,7 +1,7 @@
 ---
 title: "Snapshot debugger on OnPrem - what you need to know to set it up"
 date: 2022-02-15T11:00:00+01:00
-draft: true
+draft: false
 categories:
 - Business Central
 - Administration
