@@ -1,5 +1,5 @@
 ---
-title: "Architecture of PTE"
+title: "Architecture of PTE - Split or not to Split?"
 date: 2021-11-18T16:51:00+01:00
 draft: false
 categories:
