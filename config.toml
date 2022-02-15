@@ -59,7 +59,7 @@ defaultContentLanguage = 'en'
     alwaysOnHomepage      = false
 
     [params.intro.pic] 
-      src                 = "/assets/KSC.png"
+      src                 = "/assets/KSCSmall.png"
       shape               = "circle"
       width               = ""
       alt                 = "Kine's Info"
