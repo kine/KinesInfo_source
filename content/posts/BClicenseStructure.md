@@ -16,6 +16,7 @@ tags:
 - PTE
 - PowerShell
 mermaid: false
+featured_image: /LocalFS/Diagram.png
 ---
 
 ## New License format .bclicense
@@ -136,3 +137,69 @@ Thanks to the .bclicense you can extend your pipelines to test if license was co
 
 You can use the new .bclicense format to work with the data inside the license easily. But you need to solve few things first, like where the actual license for the customer will be stored, how to get the list of objects in app etc. Use the knowledge as you need, I hope that this article will save you some time you will need to spend on analysis of the file yourself. I am sure that there will be plenty things you can thing out around this.
 
+## P.S.: Using unsupported DLL included in BC installation
+
+After publishing this article, I got info from Steffen Balslev from Microsoft, that there is DLL for handling the .bclicense file I can use to read the info. Of course, this dll and using it in this way is **unsupported** and **undocumented**, it means you are **using it on your own responsibility**. In reality, there are two DLLs - one for .netstandard (*Microsoft.Dynamics.BusinessCentral.Bcl.dll*) and one for .net framework (*Microsoft.Dynamics.BusinessCentral.BclFwk.dll*). I succeeded to use the .net framework version  from PowerShell to handle the license file. The .netstandard one is missing some reference (but it could be my fault). 
+
+Here is my PowerShell code which loads the dll for you:
+
+```PowerShell
+#Download latest w1 artifact
+$ArtifactPath = Download-Artifacts -artifactUrl (Get-BCArtifactUrl -type OnPrem -country w1 -select Latest) -includePlatform
+#Find the dll
+$DLLPath = Get-ChildItem -Path $ArtifactPath[1] -Filter 'Microsoft.Dynamics.BusinessCentral.BclFwk.dll' -Recurse -File
+
+#region Load the assembly
+$MSAzureKeyVaultPath = Get-ChildItem -Path $ArtifactPath[1] -Filter 'Microsoft.Azure.KeyVault.dll' -Recurse -File |Select-Object -First 1
+$NewtonsoftJsonPath = Get-ChildItem -Path $ArtifactPath[1] -Filter 'Newtonsoft.Json.dll' -Recurse -File |Select-Object -First 1
+$MSAzureKeyVault = [Reflection.Assembly]::LoadFile($MSAzureKeyVaultPath.FullName)
+$NewtonsoftJson = [Reflection.Assembly]::LoadFile($NewtonsoftJsonPath.FullName)
+
+#Some magic to resolve dependencies
+$OnAssemblyResolve = [System.ResolveEventHandler] {
+    param($sender, $e)
+    foreach($a in [System.AppDomain]::CurrentDomain.GetAssemblies()) {
+        if ($a.FullName -eq $e.Name) { return $a }
+    }
+    if ($e.Name -like 'Microsoft.Azure.KeyVault*') {return $MSAzureKeyVault}
+    if ($e.Name -like 'Newtonsoft.Json*') {return $NewtonsoftJson}
+    return $null
+}
+[System.AppDomain]::CurrentDomain.add_AssemblyResolve($OnAssemblyResolve)
+try {
+    Write-Host "Loading assembly"
+    Add-Type -Path $DLLPath.FullName -Verbose
+}catch { 
+    Write-Host "Exception:" -ForegroundColor Red
+    $_.Exception.LoaderExceptions
+}
+
+[System.AppDomain]::CurrentDomain.remove_AssemblyResolve($OnAssemblyResolve)
+#endregion
+```
+
+The final use of the loaded assembly could be like this:
+
+```PowerShell
+$LicenseFile = 'my.bclicense'
+$stream = [System.IO.StreamReader]::new($LicenseFile)
+$reader = [Microsoft.Dynamics.BusinessCentral.License.BcLicense.LicenseReader]::new($stream.BaseStream)
+
+$reader.GetObjectRangePermission("Page",18)
+
+```
+
+Output will be like this:
+
+```PowerShell
+RangeStart : 4
+RangeEnd   : 56
+Read       : Direct
+Insert     : None
+Modify     : Direct
+Delete     : Direct
+Execute    : Direct
+Expiry     :
+```
+
+In this way, you do not need to parse the values etc. Everything is done by the class created for this purpose. But you are not in charge of the code. Choose wisely!
