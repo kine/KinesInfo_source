@@ -139,7 +139,7 @@ You can use the new .bclicense format to work with the data inside the license e
 
 ## P.S.: Using unsupported DLL included in BC installation
 
-After publishing this article, I got info from Steffen Balslev from Microsoft, that there is DLL for handling the .bclicense file I can use to read the info. Of course, this dll and using it in this way is **unsupported** and **undocumented**, it means you are **using it on your own responsibility**. In reality, there are two DLLs - one for .netstandard (*Microsoft.Dynamics.BusinessCentral.Bcl.dll*) and one for .net framework (*Microsoft.Dynamics.BusinessCentral.BclFwk.dll*). I succeeded to use the .net framework version  from PowerShell to handle the license file. The .netstandard one is missing some reference (but it could be my fault). 
+After publishing this article, I got info from Steffen Balslev from Microsoft (Thanks!), that there is DLL for handling the .bclicense file I can use to read the info. Of course, this dll and using it in this way is **unsupported** and **undocumented**, it means you are **using it on your own responsibility**. In reality, there are two DLLs - one for .netstandard (*Microsoft.Dynamics.BusinessCentral.Bcl.dll*) and one for .net framework (*Microsoft.Dynamics.BusinessCentral.BclFwk.dll*). I succeeded to use the .net framework version  from PowerShell to handle the license file. The .netstandard one is missing some reference (but it could be my fault). 
 
 Here is my PowerShell code which loads the dll for you:
 
