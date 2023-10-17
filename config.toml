@@ -20,7 +20,7 @@ defaultContentLanguage = 'en'
     
 [params]
   enableCDN             = false
-  cssFiles              = ["default"]
+  cssFiles              = ["default","assets/css/copy-code-button.css"]
   jsFiles               = ["default"]
   highlightjs           = true
   highlightjsTheme      = ""
@@ -33,6 +33,7 @@ defaultContentLanguage = 'en'
   hideEmptyStats        = false
   toc                   = true
   tocWords              = 400
+  coverImage            = "assets/DependencyGraph.png"
 
   [params.meta]
     description         = "Kamil Sacek blog about not only Microsoft Dynamics 365 Business Central but all around like Powershell, Azure DevOps etc."
