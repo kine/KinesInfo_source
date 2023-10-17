@@ -1,5 +1,5 @@
 ---
-title: "Using BCLicese file from powershell"
+title: "Using BCLicense file from powershell"
 date: 2022-05-18T00:00:00+01:00
 draft: false
 categories:
@@ -63,7 +63,7 @@ And now you can do just the standard XML tricks with the variable to check what 
 </License>
 ```
 
-As you can see, it is simple XML. We are interested in the node */License/PermissionCollections*. There we can find node for each license Object Type (TableDescription, TableData, System, MenuSuite, Codeunit, Page, FieldNo, Report, Query, XMLPort, Dataport, Form, LimitedUsageTable). In the *ps* (permission set?) node we can find the *p* node (permission?) for all the ranges in your license. It includes even ranges which you do not have in your license assigned, because such a ranges could have still some permissions in the license assigned, like "-MD-" permissions to be able to remove old unnecessary objects. 
+As you can see, it is simple XML. We are interested in the node */License/PermissionCollections*. There we can find node for each license Object Type (TableDescription, TableData, System, MenuSuite, Codeunit, Page, FieldNo, Report, Query, XMLPort, Dataport, Form, LimitedUsageTable). In the *ps* (permission set?) node we can find the *p* node (permission?) for all the ranges in your license. It includes even ranges which you do not have in your license assigned, because such a ranges could have still some permissions in the license assigned, like "-MD-" permissions to be able to remove old unnecessary objects.
 
 ### PermissionMask value meaning
 
@@ -102,6 +102,7 @@ d mirX DMIR
 Thus you need to be aware that it is not enough to test if the ID of your object is included in some range, but you need to check if there is X permission to execute it on the range, M and I permission to be able to modify or create the object by publishing standard APP package (if these permissions are missing, you can only publish such an object by Runtime Package) etc.
 
 You can test the permission e.g. by this function:
+
 ```powershell
 function Check-PermissionMask
 {
@@ -139,7 +140,7 @@ You can use the new .bclicense format to work with the data inside the license e
 
 ## P.S.: Using unsupported DLL included in BC installation
 
-After publishing this article, I got info from Steffen Balslev from Microsoft (Thanks!), that there is DLL for handling the .bclicense file I can use to read the info. Of course, this dll and using it in this way is **unsupported** and **undocumented**, it means you are **using it on your own responsibility**. In reality, there are two DLLs - one for .netstandard (*Microsoft.Dynamics.BusinessCentral.Bcl.dll*) and one for .net framework (*Microsoft.Dynamics.BusinessCentral.BclFwk.dll*). I succeeded to use the .net framework version  from PowerShell to handle the license file. The .netstandard one is missing some reference (but it could be my fault). 
+After publishing this article, I got info from Steffen Balslev from Microsoft (Thanks!), that there is DLL for handling the .bclicense file I can use to read the info. Of course, this dll and using it in this way is **unsupported** and **undocumented**, it means you are **using it on your own responsibility**. In reality, there are two DLLs - one for .netstandard (*Microsoft.Dynamics.BusinessCentral.Bcl.dll*) and one for .net framework (*Microsoft.Dynamics.BusinessCentral.BclFwk.dll*). I succeeded to use the .net framework version  from PowerShell to handle the license file. The .netstandard one is missing some reference (but it could be my fault).
 
 Here is my PowerShell code which loads the dll for you:
 
