@@ -23,8 +23,8 @@ In my last sessions on different conferences and webcasts I was talking about my
 To make the dream reality, we need multiple things to happen:
 
 1. Define rules for creating the NuGet packages in connection with Microsoft Dynamics 365 Business Central - status: **DONE!** (see e.g. [my and Freddy's BCTechDays session "When a dream comes true"](https://youtu.be/JpmPqDM-hzU?si=FHoHB8qP4bpACzje))
-1. Microsoft must publish their apps as NuGet packages on some public feed - status: **Work in progress** (partially done, packages are not updated and no final feed name is used yet)
-1. (optional) Microsoft need to publish AppSource apps symbols as public feed - status: **Work in progress**
+1. Microsoft must publish their apps as NuGet packages on some public feed - status: **Finished** (updated 14.10.2024) - [MS Apps public feed](https://dynamicssmb2.visualstudio.com/DynamicsBCPublicFeeds/_artifacts/feed/MSApps), [MS Apps Symbols feed](https://dynamicssmb2.visualstudio.com/DynamicsBCPublicFeeds/_artifacts/feed/MSSymbols)
+1. (optional) Microsoft need to publish AppSource apps symbols as public feed - status: **Finished** (updated 14.10.2024) - [public Artifact feed](https://dynamicssmb2.visualstudio.com/DynamicsBCPublicFeeds/_artifacts/feed/AppSourceSymbols) - updated when publisher publish new version of some app
 1. Partners need to publish their apps as NuGet packages on some feeds following the rules - status: **Depends on partner** (unknown)
 1. Partners need to be able to consume NuGet packages following the rules during CI/CD and development - status: **Depends on used technology (see next chapter)**
 
@@ -36,7 +36,8 @@ Here is the list of existing managed solutions and tools for DevOps for Business
 
 - [Alpaca](https://www.cosmoconsult.com/cosmo-alpaca/): On the roadmap (WIP)
 - [ALOps](https://alops.be/): On the roadmap (WIP)
-- [BCCH (BCContainerHelper)](https://github.com/microsoft/navcontainerhelper)/[AL-Go for GitHub](https://github.com/microsoft/AL-Go): WIP
+- [BCCH (BCContainerHelper)](https://github.com/microsoft/navcontainerhelper): WIP
+- [AL-Go for GitHub](https://github.com/microsoft/AL-Go): WIP (updated 30.9.2024)
 - [NVRAppDevOps](https://github.com/kine/NVRAppDevOps) (powershell module): Done! (since version 2.8.4-beta20, use the Invoke-PaketForAl)
 
 If you know any other DevOps solution for Business Central, let me know and I will add it here.
@@ -45,11 +46,10 @@ If you know any other DevOps solution for Business Central, let me know and I wi
 
 Another aspect of NuGetizing Business Central is possibility to consume NuGet packages from VSCode to replace the "AL: Download Symbols" action.
 
-Here is list of tools which could help with this:
+Here is list of tools which could help with this (updated on 14.10.2024):
 
 - [NVRAppDevOps](https://github.com/kine/NVRAppDevOps) (powershell module): Done! (since version v2.8.4-beta20, use the Invoke-PaketForAl)
-
-I do not know about any extension for VSCode which will help with using NuGet packages for Business Central. If you know some, let me know and I will add it here.
+- [AL NuGet Helper](https://marketplace.visualstudio.com/items?itemName=PatrickSchiefer.al-nuget-helper) from Patrick Schiefer (VS Code extension): Released first version 10.10.2024, WIP, inside using Paket CLI
 
 ## Summary
 
