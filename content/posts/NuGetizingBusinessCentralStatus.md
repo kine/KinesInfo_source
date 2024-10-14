@@ -49,7 +49,7 @@ Another aspect of NuGetizing Business Central is possibility to consume NuGet pa
 Here is list of tools which could help with this (updated on 14.10.2024):
 
 - [NVRAppDevOps](https://github.com/kine/NVRAppDevOps) (powershell module): Done! (since version v2.8.4-beta20, use the Invoke-PaketForAl)
-- [AL NuGet Helper](https://marketplace.visualstudio.com/items?itemName=PatrickSchiefer.al-nuget-helper) from Patrick Schiefer (VS Code extension): Released first version 10.10.2024, WIP, inside using Paket CLI
+- [AL NuGet Helper](https://marketplace.visualstudio.com/items?itemName=PatrickSchiefer.al-nuget-helper) from [Patrick Schiefer](https://patrickschiefer.com/) (VS Code extension): Released first version 10.10.2024, WIP, inside using Paket CLI
 
 ## Summary
 
