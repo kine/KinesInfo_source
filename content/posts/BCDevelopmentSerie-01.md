@@ -1,8 +1,8 @@
 ---
 title: "Business Central Development Serie - Part 1: Introduction"
 description: "Introduction to blog serie about best practices and patterns for developing Microsoft Dynamics 365 Business Central extensions. Covering architecture, dependency management, testing, performance, delivery and maintenance."
-date: 2026-03-05T00:00:00+01:00
-draft: true
+date: 2026-03-04T00:00:00+01:00
+draft: false
 author: "Kamil Sacek"
 categories:
 - Business Central
