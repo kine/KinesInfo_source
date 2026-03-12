@@ -48,9 +48,15 @@ Just take the AI Agent as your virtual team member. You need to onboard it, you 
 
 Your starting point could be [this site](https://alguidelines.dev/docs/agentic-coding). It includes even list of community sources and tools you can use in your process.
 
+## Tools
+
+To develop for Business Central you can use tools like GitHub Copilot or Claude. Both of them are good tools, but they have different capabilities and different logic in some parts. But these tools without additional MCPs will be just dumb code generators. To be able to produce extension which connects to existing business logic of Business Central, you need to give them access to the existing code and give them some know how about how Business Central works. To do that you can use the tools mentioned on the alguidelines.dev site.
+
 ## Extension Architecture in time of Agentic development
 
 In my article [Architecture of PTE - Split or not to Split?]({{< ref "posts/PTEArchitecture1.md" >}}) I explained how to think about architecture of your customer solution (or even AppSource product). Is Agentic development changing something on this? In my opinion not much. It adds another dimension to the decission. If you are working on big monolitic app, agent can have problem with context size. If agent is working with smaller apps, it will be easier to understand the context. But in monolith you do not have problems with implementing more complex requests (which are changing multiple areas of the app). In case of multiple depending apps you need to handle the splitting of the requirement to separate changes in separate applications. It means it is more comlpex to use e.g. cloud GitHub Copilot to develop the solutuion (leading to multiple depending Pull Requests). This is general problem of using Agentic development in MultiRoot workspaces. But not impossible to solve and the PROs (easier maintenance, smaller apps to deploy, single responsibility principe) can still overweight the CONs. It is just something to consider when you are thinking about your architecture and your development process.
+
+My articles [SaLi part 1]({{< ref "posts/SaLi_Part1.md" >}}) and [SaLi part 2]({{< ref "posts/SaLi_Part2.md" >}}) are describing rules we are using when creating our solutions. It is not hard to make instructions for agent to keep the rules in place and keep the dependnecies under control even when we are splitting the solution to multiple apps. Any rules can prevent Agents go wild.
 
 ## Developing without CI/CD solution is not a good idea
 
