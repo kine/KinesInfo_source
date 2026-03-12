@@ -17,10 +17,10 @@ tags:
 - PTE
 - AppSource
 mermaid: false
-thumbnail: BCDevSerieIntro.svg
+thumbnail: BCDevSeriePart02.svg
 images:
-    - src: assets/BCDevSerie/BCDevSerieIntro.svg
-      alt: "Business Central Development Serie - best practices and patterns for BC extension development"
+    - src: assets/BCDevSerie/BCDevSeriePart02.svg
+      alt: "Business Central Development Serie - Part 2: Using AI for BC Development"
       stretch: none
       removeBlur: false
 ---
