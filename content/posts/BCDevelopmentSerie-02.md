@@ -33,6 +33,8 @@ I am a beginner in this AI world and I see much better experts in vibe coding ex
 
 ## AI is good servant but bad master
 
+{{< fancybox path="/assets/BCDevSerie/" file="GoodServantBadMaster.png" caption="AI is good servant but bad master" gallery="BCDevSerie02" >}}
+
 As always, everything can be used for good or for bad. In good way or wrong way. AI tools are no exception. They can be very helpful if you use them as a tool to assist you in your work, but they can also lead you to problems if you rely on them too much or if you do not understand their limitations.
 
 Some people think that they can use AI to create the solution for them easily and they do not need the expensive experts anymore. They just need to ask AI to write the code and they will have the solution. But it is not that simple.
