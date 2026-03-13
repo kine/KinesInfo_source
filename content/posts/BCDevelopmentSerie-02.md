@@ -226,6 +226,10 @@ And do not forget that you still need to have **human developers who understand 
 
 Yes, it is similar problem like when calculator didn't replaced mathematicians, but it is still something to think about. We need to find the ways how to bridge this gap.
 
+## Limits
+
+I have hit the limits mostly when the solution needed to connect to standard Business Central processes. Using journal posting or document posting codeunits, or calling manufacturing planning - all this I needed to code manually or give specific instructions to AI. It was not able to figure it out correctly by itself. Similar conclusion have for example Steven Renders in his article [Where GitHub Copilot Actually Saves Time in AL Projects](https://thinkaboutit.be/2026/03/where-github-copilot-actually-saves-time-in-al-projects/).
+
 ## Responsibility
 
 And the last but not least - responsibility. You are still responsible for the code you deliver to the customer:
@@ -236,6 +240,7 @@ And the last but not least - responsibility. You are still responsible for the c
 - You are still responsible for the **bugs**
 - You are still responsible for the **technical debt**
 - You are still responsible for the **value you deliver**
+- You are still responsible for **using the Business Central standard processes**
 
 You can blame AI, but human is the one responsible. Using AI will not remove your responsibility. It could make it just worse by **making much bigger damage in much shorter time**. So be careful how you are using it!
 
