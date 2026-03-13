@@ -2,7 +2,7 @@
 title: "Business Central Development Serie - Part 2: Using AI for BC development"
 description: "How to effectively use AI tools for Business Central development - guidelines, tools, architecture considerations, and avoiding common pitfalls"
 date: 2026-03-11T00:00:00+01:00
-draft: false
+draft: true
 author: "Kamil Sacek"
 categories:
 - Business Central
