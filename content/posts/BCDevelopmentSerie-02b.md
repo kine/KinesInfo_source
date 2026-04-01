@@ -68,7 +68,7 @@ SalesLine.Validate("Unit Price", NewPrice);
 SalesLine.Modify(true);
 ```
 
-AI can produce the correct version. It can also produce the wrong version, and it will not tell you which one it chose or why. Do you know enough to check every field assignment in the generated code?
+AI can produce the correct version. It can also produce the wrong version, and it will not tell you which one it chose or why. Do you know enough to check every field assignment in the generated code? Do you know when not calling the validation and triggers is CORRECT?
 
 ### Logic in `OnAfterGetRecord` on a page
 
