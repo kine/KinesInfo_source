@@ -123,13 +123,13 @@ Vibe coding Business Central extensions responsibly is not a one-dimensional ski
 
 ### Architecture
 
-Do you know when to create a new table versus extend an existing one? When to create new application and when midify existing one? If you don't, AI will make these decisions for you — and it will make them based on the simplest interpretation of the request, not the best long-term design. The [SaLi architecture articles]({{< ref "posts/SaLi_Part1.md" >}}) describe the principles that apply directly here, and you need to validate AI output against them.
+Do you know when to create a new table versus extend an existing one? When to create new application and when modify existing one? If you don't, AI will make these decisions for you — and it will make them based on the simplest interpretation of the request, not the best long-term design. The [SaLi architecture articles]({{< ref "posts/SaLi_Part1.md" >}}) describe some principles that apply directly here, and you need to validate AI output against them. And do not forget about SOLID principles.
 
 ### Performance
 
 - Are all filters applied before `FindSet()`?
 - Are `SetLoadFields()` used to load only necessary fields?
-- Are keys defined for every field (or field combination) used in `SetRange`/`SetFilter`?
+- Are keys defined for every field (or field combination) used in `SetRange`/`SetFilter` to make SQL happy?
 - Is `Query` used instead of nested record loops — the "loopy-loopy" code that looks fine and kills performance?
 - Are page triggers (`OnAfterGetRecord`, `OnAfterGetCurrRecord`) free of database operations that run per row?
 - Is `ReadIsolation` set correctly to avoid unnecessary locks on read operations?
@@ -195,7 +195,7 @@ A plain AI agent with no rules is the highest-risk configuration. And it is the 
 
 The correct approach — described in detail in [Part 2]({{< ref "posts/BCDevelopmentSerie-02.md" >}}) — is to encode your quality standards into the agent's instructions: naming conventions, architecture rules, performance patterns, error handling requirements, permission set structure, event publishing expectations. When the agent follows these rules from the start, the output quality is fundamentally different from what a plain agent produces.
 
-This does not eliminate the need for review. But it shifts the review from "find all the problems" to "verify the agent followed the rules" — a much narrower and more tractable task.
+This does not eliminate the need for review (to learn or from any other reason, if you need it). But it shifts the review from "find all the problems" to "verify the agent followed the rules" or "haven't we forget some rule" — a much narrower and more clear task.
 
 And create such an AI agent system is not simple job.
 
@@ -209,6 +209,8 @@ When you use AI to write code, you are implicitly committing to validate its out
 
 And here is a trend already visible in the market: the explosion of **"vibe-coding cleanup experts"** — developers whose primary work is fixing AI-generated extensions/applications that shipped to production without proper validation. It is a new job category created entirely by the gap between what AI produces and what production environments require. Do not create that work for someone else. Or for yourself.
 
+Solution? "Replicate" the team structure and knowledge into the AI Agent infrastructure. And this needs time and knowledge how to do that correctly. It needs maintenance as the models are evolving. It needs monitoring to ensure the agent continues to follow the rules as it writes code. It is not a "set it and forget it" system. Can you do that? Do you have the resources to do that? If not, you are not ready to use AI for production BC development.
+
 ## When is it acceptable?
 
 This article is not saying *never use AI for Business Central development*. It is saying: know what you are committing to when you do.
@@ -217,19 +219,19 @@ This article is not saying *never use AI for Business Central development*. It i
 
 If you are building a PoC to demonstrate a concept to a customer, or to explore feasibility, or to learn — use AI freely. The code is not going to production. The goal is speed and exploration. Just be transparent about what it is and do not let a PoC silently become a production system (it happens more often than anyone admits).
 
-**Experienced teams with proper review and guardrails**
+**Experienced teams with proper rules and guardrails**
 
-If your team has the coverage to validate AI output — the architecture expertise, the BC domain knowledge, the automated testing infrastructure, the CI/CD pipeline, and the agent instructions that encode your quality standards — then AI is a powerful productivity multiplier. This is the right way to use it.
+If your team has the coverage to validate AI output (and to build the proper AI infrastructure) — the architecture expertise, the BC domain knowledge, the automated testing infrastructure, the CI/CD pipeline, and the agent instructions that encode your quality standards — then AI is a powerful productivity multiplier. This is the right way to use it.
 
 **Isolated, well-defined, low-risk changes**
 
-Adding a caption, creating a simple report extension, adding a field to a page with no business logic — these are low-risk tasks where AI produces good results and validation is straightforward. The risk is proportional to the complexity of BC business logic involved.
+Adding a caption, creating a simple report extension, adding a field to a page with no business logic — these are low-risk tasks where AI produces good results and validation is straightforward. The risk is proportional to the complexity of BC business logic involved. But still, even the simples case can be done wrongly. Are you able to validate that?
 
 **What is not acceptable**
 
 - Code going to production without review by someone who understands BC development
 - Code involving posting, item tracking, warehouse management, approval workflows, or any other complex BC process without validation by someone who knows those processes deeply
-- Extensions built without any automated tests, especially for anything touching financial data
+- Extensions built without any automated tests
 - Any code where the author cannot explain what every generated function does and why
 - Using a plain AI agent with no rules, instructions, or guardrails and treating its output as production-ready
 
