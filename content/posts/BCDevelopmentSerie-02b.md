@@ -20,7 +20,7 @@ tags:
 mermaid: false
 thumbnail: BCDevSeriePart02b.svg
 images:
-    - src: assets/BCDevSerie/BCDevSeriePart02b.svg
+    - src: assets/BCDevSerie/BCDevSeriePart02.svg
       alt: "Business Central Development Serie - Part 2b: AI for BC Development — The Knowledge Gap That Ships to Production"
       stretch: none
       removeBlur: false
